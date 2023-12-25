@@ -7,7 +7,7 @@ use App\Http\Requests\DepositRequest;
 use App\Http\Requests\WithdrawRequest;
 use App\Http\Requests\TransferRequest;
 use App\Models\userTransaction ;
-use App\Models\user ;
+use App\Models\User ;
 
 class UserController extends Controller
 {
@@ -41,7 +41,7 @@ class UserController extends Controller
      */
     public function depositMoney(userTransaction $userTransaction , DepositRequest $request)
     {
-    	$amount = number_format($request->get('amount'),2);
+    	$amount = $request->get('amount');
 
     	$userTransaction->user_id = auth()->user()->id;
     	$userTransaction->type = "credit";
@@ -72,7 +72,7 @@ class UserController extends Controller
      */
     public function withdrawMoney(userTransaction $userTransaction , WithdrawRequest $request)
     {
-    	$amount = number_format($request->get('amount'),2);
+    	$amount = $request->get('amount');
 
     	$userTransaction->user_id = auth()->user()->id;
     	$userTransaction->type = "debit";
@@ -103,7 +103,7 @@ class UserController extends Controller
      */
     public function transferMoney(userTransaction $userTransaction , TransferRequest $request)
     {
-    	$amount = number_format($request->get('amount'),2);
+    	$amount = $request->get('amount');
     	$otherUser = User::where('email',$request->get('email'))->first();
 
     	// add debit transaction for login user

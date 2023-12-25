@@ -25,7 +25,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function(){
 			Route::post('/deposit', 'depositMoney')->name('depositMoney');
 			
 			Route::get('/withdraw', 'withdraw')->name('withdraw');
-			Route::post('/withdrawMoney', 'withdrawMoney')->name('withdrawMoney');
+			Route::post('/withdraw', 'withdrawMoney')->name('withdrawMoney');
 			
 			Route::get('/transfer', 'transfer')->name('transfer');
 			Route::post('/transfer', 'transferMoney')->name('transferMoney');
